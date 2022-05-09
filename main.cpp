@@ -2,6 +2,7 @@
 #include "plane.h"
 #include "media.h"
 #include "bullet.h"
+#include "fire.h"
 
 SDL_Window* gWindow = NULL;
 
@@ -10,7 +11,7 @@ SDL_Renderer* gRenderer = NULL;
 LTexture gPLANETexture;
 LTexture gBGTexture;
 LTexture gBULLETTExture;
-
+LTexture gFIRETexture;
 
 int main( int argc, char* args[] )
 {
@@ -37,6 +38,8 @@ int main( int argc, char* args[] )
 
 			bullet bullet;
 			
+			fire fire;
+
 			int scrollingOffset = 0;
 			
 			while( !quit )
@@ -55,7 +58,14 @@ int main( int argc, char* args[] )
     				{
         				switch( e.key.keysym.sym )
         				{
-						case SDLK_RIGHT: mVelS +=10; break;
+						case SDLK_RIGHT: 
+						{
+							mVelS +=10;
+							gFIRETexture.loadFromFile("fire2.bmp",gRenderer);
+							fire.fireX = plane.mPosX-20;
+							fire.fireY = plane.mPosY;
+						
+						} break;
 						case SDLK_LEFT :{
 							 if (check_fire == false){
 							 
@@ -72,8 +82,11 @@ int main( int argc, char* args[] )
 				else if( e.type == SDL_KEYUP && e.key.repeat == 0 )
     				{
         				switch( e.key.keysym.sym ) {
-            			case SDLK_RIGHT: mVelS -= 10; break;
-        			}
+            			case SDLK_RIGHT:{
+							 mVelS -= 10; 
+							 gFIRETexture.free();	
+						} break;
+						}
     				}
 				}
 
@@ -105,11 +118,11 @@ int main( int argc, char* args[] )
 				
 				gBGTexture.render( scrollingOffset, 0 ,gRenderer);
 				gBGTexture.render( scrollingOffset + gBGTexture.getWidth(), 0,gRenderer );
-
+				
 				
 				plane.render(gRenderer,gPLANETexture);
 				bullet.render(gRenderer,gBULLETTExture);
-				
+				fire.render(gRenderer,gFIRETexture);
 				SDL_RenderPresent( gRenderer );
 			}
 		}
