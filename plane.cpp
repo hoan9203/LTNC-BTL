@@ -14,10 +14,10 @@ void plane::handleEvent( SDL_Event& e )
     {
         switch( e.key.keysym.sym )
         {
-            case SDLK_UP: mVelY -= PLANE_VEL; break;
+            case SDLK_UP: 
+                mVelY -= PLANE_VEL; break;
             case SDLK_DOWN: mVelY += PLANE_VEL; break;
-            case SDLK_LEFT: mVelX -= PLANE_VEL; break;
-            case SDLK_RIGHT: mVelX += PLANE_VEL; break;
+            
         }
     } 
     else if( e.type == SDL_KEYUP && e.key.repeat == 0 )
@@ -26,8 +26,7 @@ void plane::handleEvent( SDL_Event& e )
         {
             case SDLK_UP: mVelY += PLANE_VEL; break;
             case SDLK_DOWN: mVelY -= PLANE_VEL; break;
-            case SDLK_LEFT: mVelX += PLANE_VEL; break;
-            case SDLK_RIGHT: mVelX -= PLANE_VEL; break;
+           
         }
     }
 }

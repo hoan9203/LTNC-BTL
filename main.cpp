@@ -3,14 +3,18 @@
 #include "media.h"
 #include "bullet.h"
 #include "fire.h"
-
+#include "menu.h"
 SDL_Window* gWindow = NULL;
 
 SDL_Renderer* gRenderer = NULL;
 
+LTexture gMENUTexture;
+
 LTexture gPLANETexture;
 LTexture gBGTexture;
+
 LTexture gBULLETTExture;
+
 LTexture gFIRETexture;
 
 int main( int argc, char* args[] )
@@ -18,52 +22,41 @@ int main( int argc, char* args[] )
 	bool check_fire = false;
 	int mVelS = 0;
 	int delay = 120;
+	SDL_Event e;
+	
 	if( !init() )
 	{
 		printf( "Failed to initialize!\n" );
 	}
 	else
 	{
-		if( !loadMedia( gPLANETexture,gBGTexture) )
-		{
-			printf( "Failed to load media!\n" );
-		}
-		else
-		{	
-			bool quit = false;
-
-			SDL_Event e;
-
+			bool quit = false,speed = false;
+			
 			plane plane;
-
 			bullet bullet;
-			
 			fire fire;
-
 			int scrollingOffset = 0;
-			
-			while( !quit )
-			{
-				while( SDL_PollEvent( &e ) != 0 )
-				{
-
-					if( e.type == SDL_QUIT )
+			menuload(gMENUTexture,gRenderer);
+			loadMedia( gPLANETexture,gBGTexture);
+				while( !quit )
 					{
-						quit = true;
-					}
 					
-
-					plane.handleEvent( e );
+					while( SDL_PollEvent( &e ) != 0 )
+						{
+					
+							if( e.type == SDL_QUIT )
+								{
+									quit = true;
+								}
+				plane.handleEvent( e );
 				if( e.type == SDL_KEYDOWN && e.key.repeat == 0 )
     				{
         				switch( e.key.keysym.sym )
         				{
 						case SDLK_RIGHT: 
 						{
-							mVelS +=10;
-							gFIRETexture.loadFromFile("fire2.bmp",gRenderer);
-							fire.fireX = plane.mPosX-20;
-							fire.fireY = plane.mPosY;
+							mVelS +=15;
+							speed = true;
 						
 						} break;
 						case SDLK_LEFT :{
@@ -83,14 +76,21 @@ int main( int argc, char* args[] )
     				{
         				switch( e.key.keysym.sym ) {
             			case SDLK_RIGHT:{
-							 mVelS -= 10; 
-							 gFIRETexture.free();	
+							 mVelS -= 15; 
+							 speed = false;
+							 gFIRETexture.free();
 						} break;
 						}
     				}
 				}
-
+					
 				plane.move();
+				if (speed)
+				{
+							gFIRETexture.loadFromFile("fire2.bmp",gRenderer);
+							fire.fireX = plane.mPosX-20;
+							fire.fireY = plane.mPosY;
+				}
 				
 				bullet.move(gBULLETTExture);
 				if (check_fire)
@@ -100,7 +100,7 @@ int main( int argc, char* args[] )
 					
 				}
 				delay --;	
-				scrollingOffset --;	
+				scrollingOffset -=3;	
 				scrollingOffset-=mVelS;
 
 				if( scrollingOffset > 0 )
@@ -117,15 +117,14 @@ int main( int argc, char* args[] )
 				SDL_RenderClear( gRenderer );
 				
 				gBGTexture.render( scrollingOffset, 0 ,gRenderer);
-				gBGTexture.render( scrollingOffset + gBGTexture.getWidth(), 0,gRenderer );
-				
-				
+				gBGTexture.render( scrollingOffset + gBGTexture.getWidth(), 0,gRenderer );			
+
 				plane.render(gRenderer,gPLANETexture);
 				bullet.render(gRenderer,gBULLETTExture);
 				fire.render(gRenderer,gFIRETexture);
 				SDL_RenderPresent( gRenderer );
 			}
-		}
+		
 	}
 
 	close(gWindow,gRenderer,gBGTexture,gPLANETexture);
