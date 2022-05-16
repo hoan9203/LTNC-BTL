@@ -55,7 +55,7 @@ bool loadMedia(LTexture &gPLANETexture,LTexture &gBGTexture)
 {
 	bool success = true;
 
-	if( !gPLANETexture.loadFromFile( "plane.bmp" ,gRenderer) )
+	if( !gPLANETexture.loadFromFile( "goku.png" ,gRenderer) )
 	{
 		printf( "Failed to load plane texture!\n" );
 		success = false;
@@ -67,10 +67,7 @@ bool loadMedia(LTexture &gPLANETexture,LTexture &gBGTexture)
 		success = false;
 	}
 	
-	
 	return success;
-
-
 
 }
 

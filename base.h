@@ -4,9 +4,12 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string>
+#include <vector>
+#include <time.h>
+
 using namespace std;
 
-const int SCREEN_WIDTH = 1000;
+const int SCREEN_WIDTH = 913;
 const int SCREEN_HEIGHT = 600;
 
 class LTexture
