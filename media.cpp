@@ -55,13 +55,8 @@ bool loadMedia(LTexture &gPLANETexture,LTexture &gBGTexture)
 {
 	bool success = true;
 
-	if( !gPLANETexture.loadFromFile( "goku.png" ,gRenderer) )
-	{
-		printf( "Failed to load plane texture!\n" );
-		success = false;
-	}
 
-	if( !gBGTexture.loadFromFile( "bg600.png",gRenderer ) )
+	if( !gBGTexture.loadFromFile( "bg25601.jpg",gRenderer ) )
 	{
 		printf( "Failed to load background texture!\n" );
 		success = false;
@@ -84,4 +79,50 @@ void close(SDL_Window *gWindow,SDL_Renderer *gRenderer,LTexture &gBGTexture,LTex
 
 	IMG_Quit();
 	SDL_Quit();
+}
+void setclipgif(LTexture &gPLANETexture, int &clip) {
+	switch (clip)
+	{
+	case 0:  gPLANETexture.loadFromFile( "gokugif/gokugif-0.png",gRenderer); break;
+	case 4 : gPLANETexture.loadFromFile( "gokugif/gokugif-1.png",gRenderer); break;
+	case 8 : gPLANETexture.loadFromFile( "gokugif/gokugif-2.png",gRenderer); break;
+	case 12 : gPLANETexture.loadFromFile( "gokugif/gokugif-3.png",gRenderer); break;
+	}
+}
+void setclipgif2(LTexture &gPLANETexture, int &clip2) {
+	switch (clip2)
+	{
+	case 120:  gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-0.png",gRenderer); break;
+	case 110 : gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-1.png",gRenderer); break;
+	case 100 : gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-2.png",gRenderer); break;
+	case 90 : gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-3.png",gRenderer); break;
+	case 80 : gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-4.png",gRenderer); break;
+	case 70 : gPLANETexture.loadFromFile( "gokugif2/goku-gif-18-5.png",gRenderer); break;
+	
+	
+	}
+}
+void setclipgifaura(LTexture &gFIRETexture, int &clip) {
+	switch (clip)
+	{
+	case 0:  gFIRETexture.loadFromFile( "aura/aura1.png",gRenderer); break;
+	case 4 : gFIRETexture.loadFromFile( "aura/aura2.png",gRenderer); break;
+	case 8 : gFIRETexture.loadFromFile( "aura/aura3.png",gRenderer); break;
+	case 12 : gFIRETexture.loadFromFile( "aura/aura4.png",gRenderer); break;
+	
+	}
+}
+
+void setclipgifkame(LTexture &gBULLETTexture, int &clip) {
+	switch (clip)
+	{
+		
+		case 0 : gBULLETTexture.loadFromFile( "kiblast/ki-blast-1.png",gRenderer); break;
+		case 4 : gBULLETTexture.loadFromFile( "kiblast/ki-blast-2.png",gRenderer); break;
+		case 8 : gBULLETTexture.loadFromFile( "kiblast/ki-blast-3.png",gRenderer); break;
+		case 12: gBULLETTexture.loadFromFile( "kiblast/ki-blast-4.png",gRenderer); break;
+		case 16: gBULLETTexture.loadFromFile( "kiblast/ki-blast-5.png",gRenderer); break;
+		
+	}
+
 }

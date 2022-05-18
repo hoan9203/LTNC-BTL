@@ -2,8 +2,6 @@
 #define MENU_H_
 #include "base.h"
 
-void menuload(LTexture & gMENUTexture,SDL_Renderer * gRenderer);
-void menuevent(SDL_Event & e,LTexture &gMENUTexture,bool &checkmenu);
-
+void menuload(LTexture & gMENUTexture,LTexture & gBGTexture,SDL_Renderer * gRenderer);
 
 #endif
