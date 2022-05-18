@@ -16,6 +16,10 @@ class enemy
 
 		void render(SDL_Renderer * gRenderer,LTexture &gENEMYTexture);
 		
+		void checkcollisionbullet(int posx ,int posy);
+		
+		void checkcollisionplayer(int posx, int posy);
+		
 		int ePosX, ePosY;
 		int eVelX;
 		

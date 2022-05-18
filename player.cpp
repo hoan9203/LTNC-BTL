@@ -2,7 +2,7 @@
 
 player::player()
 {
-    mPosX = 100;
+    mPosX = 200;
     mPosY = 0 ;
     mVelX = 0;
     mVelY = 0;
@@ -51,3 +51,4 @@ void player::render(SDL_Renderer * gRenderer,LTexture &gPLAYERTexture)
 {
 	gPLAYERTexture.render( mPosX, mPosY,gRenderer );
 }
+

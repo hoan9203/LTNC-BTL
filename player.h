@@ -22,8 +22,6 @@ class player
 
     private:
 
-		
-		
 		int mVelX, mVelY;
 		
 };

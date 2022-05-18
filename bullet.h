@@ -7,8 +7,8 @@
 class bullet
 {
     public:
-		static const int Bullet_WIDTH = 10;
-		static const int Bullet_HEIGHT = 10;
+		static const int Bullet_WIDTH = 30;
+		static const int Bullet_HEIGHT = 30;
 
 		bullet();
 
