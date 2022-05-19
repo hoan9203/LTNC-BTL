@@ -2,8 +2,7 @@
 
 
 bool init()
-{
-    
+{    
 	bool success = true;
 
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -124,5 +123,22 @@ void setclipgifkame(LTexture &gBULLETTexture, int &clip) {
 		case 16: gBULLETTexture.loadFromFile( "kiblast/ki-blast-5.png",gRenderer); break;
 		
 	}
+
+}
+
+extern void setclipgifbloom(LTexture &gEXTexture, int &clip) {
+	switch (clip)
+	{
+		
+		case 0 : gEXTexture.loadFromFile( "explosion/explosion-0.png",gRenderer); break;
+		case 4 : gEXTexture.loadFromFile( "explosion/explosion-1.png",gRenderer); break;
+		case 8 : gEXTexture.loadFromFile( "explosion/explosion-2.png",gRenderer); break;
+		case 12 : gEXTexture.loadFromFile( "explosion/explosion-3.png",gRenderer); break;
+		case 16 : gEXTexture.loadFromFile( "explosion/explosion-4.png",gRenderer); break;
+		case 20 : gEXTexture.loadFromFile( "explosion/explosion-5.png",gRenderer); break;
+		case 24 : gEXTexture.loadFromFile( "explosion/explosion-6.png",gRenderer); break;
+		case 28 : gEXTexture.loadFromFile( "explosion/explosion-7.png",gRenderer); break;
+	
+	}	
 
 }

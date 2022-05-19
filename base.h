@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include <time.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 using namespace std;
 
@@ -21,13 +23,9 @@ class LTexture
 		~LTexture();
 
 
-		bool loadFromFile( std::string path ,SDL_Renderer * gRenderer);
+		bool loadFromFile( string path ,SDL_Renderer * gRenderer);
 		
-		#if defined(SDL_TTF_MAJOR_VERSION)
-
-		bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
-		#endif
-
+		bool loadFromRenderedText(string textureText, SDL_Color textColor,SDL_Renderer * gRenderer, TTF_Font * gFont );
 
 		void free();
 

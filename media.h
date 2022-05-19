@@ -3,6 +3,7 @@
 
 #include "base.h"
 
+
 extern SDL_Window* gWindow ;
 
 extern SDL_Renderer* gRenderer;
@@ -20,5 +21,7 @@ extern void setclipgif2(LTexture &gPLANETexture, int &clip2);
 extern void setclipgifaura(LTexture &gFIRETexture, int &clip);
 
 extern void setclipgifkame(LTexture &gBULLLETTexture, int &clip);
+
+extern void setclipgifbloom(LTexture &gEXTexture, int &clip);
 
 #endif

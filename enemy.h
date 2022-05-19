@@ -2,7 +2,7 @@
 #define ENEMY_H_
 
 #include "base.h"
-
+#include "explosion.h"
 class enemy
 {
     public:
@@ -16,9 +16,11 @@ class enemy
 
 		void render(SDL_Renderer * gRenderer,LTexture &gENEMYTexture);
 		
-		void checkcollisionbullet(int posx ,int posy);
+		void checkcollisionbullet(int posx ,int &posy, explosion &e, bool &check_bloom);
 		
 		void checkcollisionplayer(int posx, int posy);
+		
+		
 		
 		int ePosX, ePosY;
 		int eVelX;
