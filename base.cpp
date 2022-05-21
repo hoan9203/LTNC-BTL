@@ -1,10 +1,12 @@
 #include "base.h"
+using namespace std;
 LTexture::LTexture()
 {
 
 	mTexture = NULL;
 	mWidth = 0;
 	mHeight = 0;
+	font = NULL;
 }
 LTexture::~LTexture()
 {
@@ -15,7 +17,7 @@ bool LTexture::loadFromFile( std::string path,SDL_Renderer *gRenderer )
 {
 
 	free();
-
+	
 
 	SDL_Texture* newTexture = NULL;
 
@@ -49,33 +51,31 @@ bool LTexture::loadFromFile( std::string path,SDL_Renderer *gRenderer )
 	return mTexture != NULL;
 }
 
-
-bool LTexture::loadFromRenderedText(string textureText, SDL_Color textColor,SDL_Renderer *gRenderer, TTF_Font *gFont )
-{
+ bool LTexture::loadFromText(string text, string textFont, SDL_Color textColor, int size, SDL_Renderer * gRenderer) {
 	free();
+	
+	font = TTF_OpenFont(textFont.c_str(), size);
+	
+	if (font == NULL) {
+		cout << "Could not load Font ! " << endl;
+		return false;
+	}
 
-	SDL_Surface* textSurface = TTF_RenderText_Solid( gFont, textureText.c_str(), textColor );
-	if( textSurface != NULL )
-	{
-        mTexture = SDL_CreateTextureFromSurface( gRenderer, textSurface );
-		if( mTexture == NULL )
-		{
-			printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
+	if (textSurface == NULL) {
+		cout << "Could not create text surface ! " << endl;
+	}
+	else {
+		mTexture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
+		if (mTexture == NULL) {
+			cout << "Could not create texture ! " << SDL_GetError();
 		}
-		else
-		{
+		else {
 			mWidth = textSurface->w;
 			mHeight = textSurface->h;
 		}
-
-		SDL_FreeSurface( textSurface );
+		SDL_FreeSurface(textSurface);
 	}
-	else
-	{
-		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
-	}
-
-	
 	return mTexture != NULL;
 }
 

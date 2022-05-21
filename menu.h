@@ -2,6 +2,7 @@
 #define MENU_H_
 #include "base.h"
 
-void menuload(LTexture & gMENUTexture,LTexture & gBGTexture,SDL_Renderer * gRenderer);
+void menuload(LTexture & gMENUTexture,LTexture & gBGTexture,LTexture &gTexture,SDL_Renderer * gRenderer);
+
 
 #endif

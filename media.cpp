@@ -4,7 +4,11 @@
 bool init()
 {    
 	bool success = true;
-
+	if (TTF_Init() < 0)
+	{
+		SDL_Log("%s", TTF_GetError());
+		return -1;
+	}
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
 		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
@@ -17,7 +21,7 @@ bool init()
 			printf( "Warning: Linear texture filtering not enabled!" );
 		}
 
-		gWindow = SDL_CreateWindow( "Plane Control", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		gWindow = SDL_CreateWindow( "DRAGON BALL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -43,6 +47,9 @@ bool init()
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
 				}
+
+				
+
 			}
 		}
 	}
@@ -53,7 +60,6 @@ bool init()
 bool loadMedia(LTexture &gPLANETexture,LTexture &gBGTexture)
 {
 	bool success = true;
-
 
 	if( !gBGTexture.loadFromFile( "bg25601.jpg",gRenderer ) )
 	{

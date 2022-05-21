@@ -1,14 +1,14 @@
 #include "menu.h"
 
-void menuload(LTexture &gMENUTexture,LTexture &gBGTexture,SDL_Renderer * gRenderer) 
+void menuload(LTexture &gMENUTexture,LTexture &gBGTexture,LTexture &gTexture,SDL_Renderer * gRenderer) 
 {
-		SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-		SDL_RenderClear( gRenderer );
-	    gMENUTexture.loadFromFile("menu.png",gRenderer);
-		gBGTexture.loadFromFile("bg25601.jpg",gRenderer);
-		gBGTexture.render( 0 , 0 , gRenderer);		
-		gMENUTexture.render(0 , 0 , gRenderer);
-		SDL_RenderPresent( gRenderer );
-		SDL_Delay(5000);
+			SDL_Color color = {0,0,0};
+
+			gTexture.loadFromText("Press ENTER to start game","font1.otf",color,40,gRenderer);	
+	    	gMENUTexture.loadFromFile("menu.jpg",gRenderer);	
+			gMENUTexture.render(0 , 0 , gRenderer);
+			gTexture.render(50,550,gRenderer);
+			
+			SDL_RenderPresent( gRenderer );	
 }
 	

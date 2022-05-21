@@ -8,7 +8,7 @@ class player
     public:
 		static const int PLAYER_WIDTH = 60;
 		static const int PLAYER_HEIGHT = 30;
-		static const int PLAYER_VEL = 8;
+		static const int PLAYER_VEL = 15;
 		
 		int mPosX, mPosY;
 		

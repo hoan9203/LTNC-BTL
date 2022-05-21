@@ -18,7 +18,7 @@ class enemy
 		
 		void checkcollisionbullet(int posx ,int &posy, explosion &e, bool &check_bloom);
 		
-		void checkcollisionplayer(int posx, int posy);
+		void checkcollisionplayer(int posx, int posy, bool& check_loss);
 		
 		
 		

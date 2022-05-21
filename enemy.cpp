@@ -2,7 +2,7 @@
 enemy::enemy()
 {
     //eVelX = -10 - 2*(rand()% (4 - 0 + 1 ) +0 );
-    eVelX = -30;
+    eVelX = -25;
 }
 
 
@@ -28,11 +28,10 @@ void enemy::checkcollisionbullet(int posx, int &posy, explosion &e,bool &check_b
         ePosX = -100;
     }
 }
-void enemy::checkcollisionplayer(int posx, int posy ) 
+void enemy::checkcollisionplayer(int posx, int posy, bool& check_loss) 
 {
-    if ( (ePosY-50 < posy) && (ePosY +50 > posy) && (ePosX < posx) &&(ePosX +70 > posx)){
+    if ( (ePosY-50 < posy) && (ePosY + 50 > posy) && (ePosX < posx) &&(ePosX +70 > posx)){
         ePosX = -100;
-        SDL_Delay(500);
+        check_loss = true;
     }
-
 }

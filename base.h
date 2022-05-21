@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <time.h>
@@ -14,6 +15,8 @@ using namespace std;
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 720;
 
+
+
 class LTexture
 {
 	public:
@@ -21,12 +24,13 @@ class LTexture
 		LTexture();
 	
 		~LTexture();
-
+		
+		
 
 		bool loadFromFile( string path ,SDL_Renderer * gRenderer);
 		
-		bool loadFromRenderedText(string textureText, SDL_Color textColor,SDL_Renderer * gRenderer, TTF_Font * gFont );
-
+		bool loadFromText(string text, string textFont, SDL_Color textColor, int size, SDL_Renderer * gRenderer);
+		
 		void free();
 
 		void setColor( Uint8 red, Uint8 green, Uint8 blue );
@@ -51,7 +55,7 @@ class LTexture
 		int mWidth;
 		int mHeight;
 
-
+		TTF_Font * font;
 
 };
 #endif

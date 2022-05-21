@@ -1,10 +1,7 @@
 #include "aura.h"
 
 
-aura::aura()
-{
-    
-}
+aura::aura() {};
 
 void aura::render(SDL_Renderer * gRenderer,LTexture &gAURATexture)
 {
