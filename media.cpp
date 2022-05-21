@@ -47,9 +47,6 @@ bool init()
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
 				}
-
-				
-
 			}
 		}
 	}

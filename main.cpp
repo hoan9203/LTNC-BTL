@@ -51,7 +51,7 @@ int main( int argc, char* args[] )
 
 	{
 			bool quit = false,speedup = false ;
-			
+			gENEMYTexture.loadFromFile("enemy.png",gRenderer);
 			
 			if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
 					printf("%s", Mix_GetError());
@@ -157,6 +157,7 @@ int main( int argc, char* args[] )
 							SDL_RenderPresent(gRenderer);
 						}
 						flag++;
+						gMENUTexture.free();
 					}
 				player.move();
 				
@@ -188,7 +189,7 @@ int main( int argc, char* args[] )
 						clip2 = 0;	
 					}			
 					
-						gENEMYTexture.loadFromFile("enemy.png",gRenderer);
+						
 						if (!check_enemy)		
 							for (int i = 0; i < 7 ; i++) {
 								
@@ -261,8 +262,11 @@ int main( int argc, char* args[] )
 						score -= 3 +mVelS;
 						highscore = max(highscore,score);
 					}
-				
-				SDL_RenderPresent( gRenderer );
+						gGameover1.free();
+						gGameover2.free();
+						gHighscore.free();
+						gHighscoreText.free();
+						SDL_RenderPresent( gRenderer );
 				
 			}
 			else {
